@@ -72,7 +72,7 @@ class FlutterUxcam {
   static Future<bool> startWithConfiguration(FlutterUxConfig config) async {
     final bool? status =
     await _channel.invokeMethod<bool>('startWithConfiguration', {"config": config.toJson()});
-    return status!;
+    return (status ?? true);
   }
 
   static Future<FlutterUxConfig> configurationForUXCam() async {
