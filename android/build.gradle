@@ -1,0 +1,46 @@
+group 'com.uxcam.flutteruxcam'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenLocal()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://sdk.uxcam.com/android/'
+        }
+        mavenLocal()
+//        flatDir {dirs 'libs'}
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    // following is an internal maven local release, a SDK version with occlusion is required
+    implementation 'com.uxcam:uxcam:3.4.0'
+    implementation "com.squareup.okhttp3:okhttp:4.8.1"
+//    implementation fileTree(dir: '/Users/uxcam/AndroidStudioProjects/flutter_uxcam/lib/', include: ['*.jar'])
+}
